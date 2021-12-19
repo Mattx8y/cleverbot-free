@@ -40,10 +40,6 @@ module.exports = async (stimulus, context = [], language) => {
     for (let i = 0; i < 15; i++) {
         try {
             const req = await superagent.post(`https://www.cleverbot.com/webservicemin?uc=UseOfficialCleverbotAPI${cbsid ? `&out=${encodeURIComponent(lastResponse)}&in=${encodeURIComponent(stimulus)}&bot=c&cbsid=${cbsid}&xai=${xai}&ns=2&al=&dl=en&flag=&user=&mode=1&alt=0&reac=&emo=&sou=website&xed=&` : ""}`)
-                .timeout({
-                    response: 10000,
-                    deadline: 60000,
-                })
                 .set("Cookie", `${cookies[0].split(";")[0]}; _cbsid=-1`)
                 .set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36")
                 .type("text/plain")
